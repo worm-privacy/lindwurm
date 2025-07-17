@@ -5,7 +5,6 @@ Here you will find the instructions to participate in the Lindwurm incentivized 
 In order to participate in the testnet you'll need:
 
 - [x] A machine or VPS or dedicated-server with at least 16GB of RAM
-- [x] Debian/Ubuntu operating system
 - [x] At least 1.0 Sepolia ETH which you may get from Sepolia faucets
 
 Test on Debian/Ubuntu systems:
@@ -48,3 +47,35 @@ Test on Debian/Ubuntu systems:
       - `--assumed-worm-price` is your assumed WORM/ETH pair price.
       - `--future-epochs` is the number of epochs you would like to participate in in advance.
 13. Let us know your Sepolia address on X!
+
+## Or
+
+Test on Docker Container:
+
+### Prerequisites:
+- Install Docker on your machine (Windows, Mac, or Linux).  
+  See [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) for installation instructions.
+
+1. clone this repo with:  
+   ```
+   git clone https://github.com/nodestarQ/lindwurm.git && cd lindwurm
+   ```
+
+2. Build the docker container:
+   ```
+   docker build -t lindwurm-miner .
+   ```
+
+3. Burn some ETH and generate and submit a proof:
+    ```
+    docker run --rm lindwurm-miner burn sepolia [YOUR SEPOLIA PRIVATE KEY] 1.0 1.0 0
+    ```
+
+4. Congrats! 1.0 BETH has been minted for `0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1`! Check by running:
+    ```
+    docker run --rm lindwurm-miner info sepolia [YOUR SEPOLIA PRIVATE KEY]
+    ```
+5. Now run the miner:
+    ```
+    docker run --rm lindwurm-miner mine sepolia [YOUR SEPOLIA PRIVATE KEY] 0.0001 0.01 0.000002 3 [OPTIONAL: CUSTOM SEPOLIA RPC URL]
+    ```
