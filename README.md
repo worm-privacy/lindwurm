@@ -56,6 +56,15 @@ Test on Docker Container:
 - Install Docker on your machine (Windows, Mac, or Linux).  
   See [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) for installation instructions.
 
+#### a) pull docker image: 
+1. run 
+```
+docker pull nodestarq/lindwurm-miner:latest
+```
+and continue with 3.
+
+#### b) Build yourself
+
 1. clone this repo with:  
    ```
    git clone https://github.com/nodestarQ/lindwurm.git && cd lindwurm
@@ -65,6 +74,7 @@ Test on Docker Container:
    ```
    docker build -t lindwurm-miner .
    ```
+
 
 3. Burn some ETH and generate and submit a proof:
     ```
