@@ -58,7 +58,7 @@ Test on Docker Container:
 
 1. clone this repo with:  
    ```
-   git clone https://github.com/nodestarQ/lindwurm.git && cd lindwurm
+   git clone https://github.com/worm-privacy/lindwurm.git && cd lindwurm
    ```
 
 2. Build the docker container:
