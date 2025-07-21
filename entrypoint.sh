@@ -25,13 +25,13 @@ case "$CMD" in
     worm-miner burn --network "$NETWORK" --private-key "$PRIVATE_KEY" --amount "$AMOUNT" --spend "$SPEND" --fee "$FEE"
     ;;
   participate)
-    AMOUNT_PER_EPOCH=${4:-1.0}
-    NUM_EPOCHS=${5:-1.0}
+    AMOUNT_PER_EPOCH=${4:-}
+    NUM_EPOCHS=${5:-}
     worm-miner participate --network "$NETWORK" --private-key "$PRIVATE_KEY" --amount-per-epoch "$AMOUNT_PER_EPOCH" --num-epochs "$NUM_EPOCHS"
     ;;
   claim)
-    FROM_EPOCH=${4:-1.0}
-    NUM_EPOCHS=${5:-1.0}
+    FROM_EPOCH=${4:-}
+    NUM_EPOCHS=${5:-}
     worm-miner claim --network "$NETWORK" --private-key "$PRIVATE_KEY" --from-epoch "$FROM_EPOCH" --num-epochs "$NUM_EPOCHS"
     ;;
   info)
