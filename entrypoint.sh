@@ -12,6 +12,8 @@ if [[ -z "$PRIVATE_KEY" || -z "$NETWORK" ]]; then
   echo "  docker run ... burn <network> <private_key> [amount] [spend] [fee]"
   echo "  docker run ... info <network> <private_key>"
   echo "  docker run ... mine <network> <private_key> [min] [max] [price] [epochs] [custom_rpc]"
+  echo "  docker run ... participate <network> <private_key> [amount_per_epoch] [num_epochs]"
+  echo "  docker run ... claim <network> <private_key> [from_epoch] [num_epochs]"
   exit 1
 fi
 
@@ -21,6 +23,16 @@ case "$CMD" in
     SPEND=${5:-1.0}
     FEE=${6:-0}
     worm-miner burn --network "$NETWORK" --private-key "$PRIVATE_KEY" --amount "$AMOUNT" --spend "$SPEND" --fee "$FEE"
+    ;;
+  participate)
+    AMOUNT_PER_EPOCH=${4:-1.0}
+    NUM_EPOCHS=${5:-1.0}
+    worm-miner participate --network "$NETWORK" --private-key "$PRIVATE_KEY" --amount-per-epoch "$AMOUNT_PER_EPOCH" --num-epochs "$NUM_EPOCHS"
+    ;;
+  claim)
+    FROM_EPOCH=${4:-1.0}
+    NUM_EPOCHS=${5:-1.0}
+    worm-miner claim --network "$NETWORK" --private-key "$PRIVATE_KEY" --from-epoch "$FROM_EPOCH" --num-epochs "$NUM_EPOCHS"
     ;;
   info)
     worm-miner info --network "$NETWORK" --private-key "$PRIVATE_KEY"
@@ -44,7 +56,7 @@ case "$CMD" in
     ;;
   *)
     echo "❌ Unknown command: $CMD"
-    echo "Valid commands are: burn, info, mine"
+    echo "Valid commands are: burn, info, mine, participate, claim"
     exit 1
     ;;
 esac
