@@ -6,6 +6,11 @@ CMD=$1
 NETWORK=$2
 PRIVATE_KEY=$3
 
+if [[ "$CMD" = "version" ]]; then
+  worm-miner --version
+  exit 0
+fi
+
 if [[ -z "$PRIVATE_KEY" || -z "$NETWORK" ]]; then
   echo "❌ Error: Missing required arguments."
   echo "Usage:"
@@ -18,6 +23,9 @@ if [[ -z "$PRIVATE_KEY" || -z "$NETWORK" ]]; then
 fi
 
 case "$CMD" in
+  version)
+    worm-miner --version
+    ;;
   burn)
     AMOUNT=${4:-1.0}
     SPEND=${5:-1.0}
@@ -56,7 +64,7 @@ case "$CMD" in
     ;;
   *)
     echo "❌ Unknown command: $CMD"
-    echo "Valid commands are: burn, info, mine, participate, claim"
+    echo "Valid commands are: burn, info, mine, participate, claim, version"
     exit 1
     ;;
 esac
