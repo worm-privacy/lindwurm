@@ -16,7 +16,7 @@ if [[ -z "$PRIVATE_KEY" || -z "$NETWORK" ]]; then
   echo "Usage:"
   echo "  docker run ... burn <network> <private_key> [amount] [spend] [fee]"
   echo "  docker run ... info <network> <private_key>"
-  echo "  docker run ... mine <network> <private_key> [min] [max] [price] [epochs] [custom_rpc]"
+  echo "  docker run ... mine <network> <private_key> [amount_per_epoch] [num_epochs] [custom_rpc]"
   echo "  docker run ... participate <network> <private_key> [amount_per_epoch] [num_epochs]"
   echo "  docker run ... claim <network> <private_key> [from_epoch] [num_epochs]"
   exit 1
@@ -46,15 +46,13 @@ case "$CMD" in
     worm-miner info --network "$NETWORK" --private-key "$PRIVATE_KEY"
     ;;
   mine)
-    MIN=${4:-0.0001}
-    MAX=${5:-0.01}
-    PRICE=${6:-0.000002}
-    EPOCHS=${7:-3}
-    CUSTOM_RPC=${8:-}
+    AMOUNT_PER_EPOCH=${4:-}
+    NUM_EPOCHS=${5:-}
+    CUSTOM_RPC=${6:-}
 
     CMD="worm-miner mine --network \"$NETWORK\" --private-key \"$PRIVATE_KEY\" \
-         --min-beth-per-epoch \"$MIN\" --max-beth-per-epoch \"$MAX\" \
-         --assumed-worm-price \"$PRICE\" --future-epochs \"$EPOCHS\""
+         --amount-per-epoch \"$AMOUNT_PER_EPOCH\" --num-epochs \"$NUM_EPOCHS\" \
+         --claim-interval 5 \"$PRICE\" "
 
     if [[ -n "$CUSTOM_RPC" ]]; then
       CMD="$CMD --custom-rpc \"$CUSTOM_RPC\""
