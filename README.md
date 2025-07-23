@@ -53,7 +53,7 @@ Test on Debian/Ubuntu systems:
 Test on Docker Container:
 
 ### Prerequisites:
-- Install Docker on your machine (Windows, Mac, or Linux).  
+- Install Docker on your machine. (***WARN:*** ARM / Apple Silicon devices are not supported!)
   See [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) for installation instructions.
 
 1. clone this repo with:  
