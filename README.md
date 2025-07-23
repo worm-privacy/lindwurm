@@ -4,7 +4,7 @@ Here you will find the instructions to participate in the Lindwurm incentivized 
 
 In order to participate in the testnet you'll need:
 
-- [x] A machine or VPS or dedicated-server with at least 16GB of RAM
+- [x] An x86-64 machine or VPS or dedicated-server with at least 16GB of RAM (***WARN:*** Apple Silicone is not supported!)
 - [x] At least 1.0 Sepolia ETH which you may get from Sepolia faucets
 
 Test on Debian/Ubuntu systems:
