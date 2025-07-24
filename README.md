@@ -39,14 +39,13 @@ Test on Debian/Ubuntu systems:
     ```
 12. Now run the miner:
     ```
-    worm-miner mine --network sepolia --private-key [YOUR SEPOLIA PRIVATE KEY] --min-beth-per-epoch 0.0001 --max-beth-per-epoch 0.01 --assumed-worm-price 0.000002 --future-epochs 3
+    worm-miner mine --network sepolia --private-key [YOUR SEPOLIA PRIVATE KEY] --amount-per-epoch 0.1 --num-epochs 3 --claim-interval 3
     ```
     Where:
-      - `--min-beth-per-epoch` is the min amount of BETH you are willing to consume in order to participate in any block.
-      - `--max-beth-per-epoch` is the max amount of BETH you are willing to consume in order to participate in any block.
-      - `--assumed-worm-price` is your assumed WORM/ETH pair price.
-      - `--future-epochs` is the number of epochs you would like to participate in in advance.
-13. Let us know your Sepolia address on X!
+     - `--amount-per-epoch` is the amount of BETH you will consume in each epoch.
+     - `--num-epochs` is the number of epochs you would like to participate in in advance.
+     - `--claim-interval` is the number of epochs you would like to wait before initiating WORM claims.
+     - `--custom-rpc` is an optional parameter that takes in an rpc-url.
 
 ## Or
 
